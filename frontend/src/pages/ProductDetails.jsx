@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
           <img
             src={product.image}
             alt={product.title}
-            className="h-full object-cover rounded-2xl"
+            className="h-full w-full object-cover rounded-2xl"
           />
         </div>
 

@@ -50,7 +50,6 @@ const UserDashboard = () => {
       title: "Vintage Leather Jacket",
       category: "Fashion",
       price: 85,
-      status: "active",
       views: 124,
       likes: 23,
       datePosted: "2 days ago",
@@ -62,7 +61,6 @@ const UserDashboard = () => {
       title: "MacBook Pro 2019",
       category: "Electronics",
       price: 899,
-      status: "sold",
       views: 89,
       likes: 45,
       datePosted: "1 week ago",
@@ -74,7 +72,6 @@ const UserDashboard = () => {
       title: "Scandinavian Dining Chair",
       category: "Furniture",
       price: 120,
-      status: "pending",
       views: 67,
       likes: 12,
       datePosted: "3 days ago",
@@ -86,7 +83,6 @@ const UserDashboard = () => {
       title: "Canon DSLR Camera",
       category: "Electronics",
       price: 450,
-      status: "active",
       views: 156,
       likes: 78,
       datePosted: "5 days ago",
@@ -114,18 +110,6 @@ const UserDashboard = () => {
     "Home & Garden",
   ];
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "active":
-        return "bg-green-100 text-green-800";
-      case "sold":
-        return "bg-blue-100 text-blue-800";
-      case "pending":
-        return "bg-yellow-100 text-yellow-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
 
   const filteredListings = userListings.filter((listing) => {
     const matchesSearch = listing.title
@@ -280,15 +264,7 @@ const UserDashboard = () => {
                   alt={listing.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="absolute top-3 right-3">
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-semibold capitalize ${getStatusColor(
-                      listing.status
-                    )}`}
-                  >
-                    {listing.status}
-                  </span>
-                </div>
+                
               </div>
 
               <div className="p-4">
