@@ -320,7 +320,11 @@ const UserDashboard = () => {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Link to={"/product"} className="flex-1 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-1">
+                  <Link 
+                    to={`/product/${listing.id}`} 
+                    state={{ product: listing }} 
+                    className="flex-1 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-1"
+                  >
                     <EyeIcon size={14} />
                     <span>View Product</span>
                   </Link>
