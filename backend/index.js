@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
+import userRouter from './Routes/userRoute.js';
 
 dotenv.config();
 const app = express();
@@ -29,7 +30,7 @@ try {
 }
 
 //apis
-
+app.use("/api/v1/user", userRouter);
 
 const port = 3001 || process.env.PORT;
 
