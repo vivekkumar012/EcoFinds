@@ -103,12 +103,12 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="px-8 py-4 bg-white text-green-600 rounded-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl flex items-center space-x-2">
-              <span>Start Shopping</span>
+              <Link to={"/login"}>Start Shopping</Link>
               <ArrowRight size={20} />
             </button>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
+            <Link to={"/login"} className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
               List Your Items
-            </button>
+            </Link>
           </div>
         </div>
       </section>

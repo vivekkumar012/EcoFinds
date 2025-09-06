@@ -27,7 +27,7 @@ const SignUp = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post("http://localhost:3001/api/v1/user/register", {
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -64,7 +64,7 @@ const SignUp = () => {
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-green-700">
-                Display Name
+                User Name
               </label>
               <input
                 type="text"
