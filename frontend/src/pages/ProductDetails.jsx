@@ -69,7 +69,6 @@ export default function ProductDetailPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Category: <b>{product.category}</b> <br />
             Price: <b>${product.price}</b> <br />
-            Status: <b>{product.status}</b> <br />
             Views: {product.views} | Likes: {product.likes} <br />
             Posted: {product.datePosted}
           </p>

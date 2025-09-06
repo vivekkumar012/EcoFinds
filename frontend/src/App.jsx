@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import DashBoard from './pages/DashBoard'
 import ProductDetailPage from "./pages/ProductDetails";
+import MyListingsPage from './pages/MyListings'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Signup />} />
         <Route path='/dashboard' element={<DashBoard />} />
+        <Route path="/listings" element={<MyListingsPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
       </Routes>
     </div>
