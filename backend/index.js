@@ -34,21 +34,14 @@ try {
     })
 }
 
-//apis
-app.use("/api/v1/user", userRouter);
+
+ app.use("/api/v1/user" ,userRouter);
+app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/cart", cartRoutes);
+app.use("/api/v1/purchases", purchaseRoutes);
 
 const port = 3001 || process.env.PORT;
 
 app.listen(port, () => {
     console.log(`App is listening on Port${port}`)
 })
-
-
-
-
- // routes
-
- app.use("/api/v1/user" ,userRouter);
-app.use("/api/v1/products", productRoutes);
-app.use("/api/v1/cart", cartRoutes);
-app.use("/api/v1/purchases", purchaseRoutes);

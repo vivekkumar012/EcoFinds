@@ -54,7 +54,7 @@ const AddProduct = () => {
     });
 
     try {
-      const res = await fetch("http://localhost:5000/api/products", {
+      const res = await fetch("http://localhost:3001/api/v1/products/add-product", {
         method: "POST",
         body: data,
       });
@@ -78,14 +78,14 @@ const AddProduct = () => {
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
             <Link
-              to={"/"}
+              to={"/dashboard"}
               className="text-white font-bold text-lg cursor-pointer"
             >
               🌱
             </Link>
           </div>
           <Link
-            to={"/"}
+            to={"/dashboard"}
             className="text-2xl font-bold text-gray-900 cursor-pointer"
           >
             EcoFinds

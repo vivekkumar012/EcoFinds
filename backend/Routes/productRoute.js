@@ -4,7 +4,7 @@ import  auth from "../Middlewares/auth.js"
 const router = express.Router();
 
 import { addProduct, getProducts, getProductById, updateProduct, deleteProduct } from "../Controllers/productController.js"
-router.post("/", auth, addProduct);
+router.post("/add-product", auth, addProduct);
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 router.put("/:id", auth, updateProduct);

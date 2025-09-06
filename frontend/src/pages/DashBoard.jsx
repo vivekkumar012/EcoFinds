@@ -20,8 +20,10 @@ import {
   DollarSign,
   Heart,
   EyeIcon,
+  LogOut,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UserDashboard = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,7 +42,7 @@ const UserDashboard = () => {
     totalSales: 47,
     totalEarnings: 2340,
     profileImage:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b631?w=150&h=150&fit=crop&crop=face",
+      "https://imgs.search.brave.com/rLEkVbhTMJIGxWkEIsO9s2Oux7hH44B93gr85sR3Dyg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vd3d3LnNl/cmdpb2dhcmNpYWhl/YWRzaG90cy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjUv/MDIvYmVzdC1kYXRp/bmctcGhvdG9zLWZv/ci1ndXlzLTc1LTY1/MHg5NzUuanBn",
   });
 
   // Mock user's listings (would come from backend)
@@ -69,26 +71,60 @@ const UserDashboard = () => {
     },
     {
       id: 3,
-      title: "Scandinavian Dining Chair",
-      category: "Furniture",
-      price: 120,
-      views: 67,
-      likes: 12,
-      datePosted: "3 days ago",
+      title: "Mountain Bike",
+      category: "Sports",
+      price: 320,
+      views: 210,
+      likes: 67,
+      datePosted: "5 days ago",
       image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop",
+        "https://imgs.search.brave.com/QEuZatAzn5norD02wB97qhiJgSIC55bhddITaRGHyV4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MzQxNTAwMzQ3NjQt/MDQ2YmYyMjVkM2Zh/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE9IeDhiVzkx/Ym5SaGFXNGxNakJp/YVd0bGZHVnVmREI4/ZkRCOGZId3c",
     },
     {
       id: 4,
+      title: "Acoustic Guitar",
+      category: "Music",
+      price: 150,
+      views: 175,
+      likes: 52,
+      datePosted: "3 days ago",
+      image:
+        "https://imgs.search.brave.com/Wp7k_E5bhPy88iW2lHTHrqHCED2Wv7lyDQZ3TjnTG4k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bW9zLmNtcy5mdXR1/cmVjZG4ubmV0L2dh/ZnczeUtwa2JRRzV2/ZFFmQm9YUWouanBn",
+    },
+    {
+      id: 5,
+      title: "Office Chair",
+      category: "Furniture",
+      price: 95,
+      views: 140,
+      likes: 34,
+      datePosted: "6 days ago",
+      image:
+        "https://imgs.search.brave.com/rlgMyIb4C7c7o7eIzD7S2Ns2lE37Roj3w2Q6SYWZtP0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cy4x/MjNyZi5jb20vNDUw/d20vZGVjaGV2bS9k/ZWNoZXZtMTQwMy9k/ZWNoZXZtMTQwMzAw/MDE1LzI2NDA3Mjkz/LWJsYWNrLWxlYXRo/ZXItb2ZmaWNlLWNo/YWlyLWluLXJvb20u/anBnP3Zlcj02",
+    },
+    {
+      id: 6,
       title: "Canon DSLR Camera",
       category: "Electronics",
-      price: 450,
-      views: 156,
-      likes: 78,
-      datePosted: "5 days ago",
+      price: 650,
+      views: 320,
+      likes: 89,
+      datePosted: "1 day ago",
       image:
-        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=200&h=200&fit=crop",
+        "https://imgs.search.brave.com/ghGbeM9r5qFPPm_ox1EgcgNSWV6ND_EJklUcYBw8Qns/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE0/OTU3MDc5MDI2NDEt/NzVjYWM1ODhkMmU5/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE5ueDhZMkZ1/YjI1OFpXNThNSHg4/TUh4OGZEQT0",
     },
+    {
+      id: 7,
+      title: "Classic Wrist Watch",
+      category: "Accessories",
+      price: 120,
+      views: 150,
+      likes: 43,
+      datePosted: "10 days ago",
+      image:
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop",
+    },
+    
   ]);
 
   const navigationItems = [
@@ -110,7 +146,6 @@ const UserDashboard = () => {
     "Home & Garden",
   ];
 
-
   const filteredListings = userListings.filter((listing) => {
     const matchesSearch = listing.title
       .toLowerCase()
@@ -120,6 +155,14 @@ const UserDashboard = () => {
       listing.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    toast.success("LogOut Successfully");
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -149,13 +192,13 @@ const UserDashboard = () => {
             {/* Right side icons */}
             <div className="flex items-center space-x-4">
               <button className="p-2 rounded-lg hover:bg-gray-100 relative">
-                <ShoppingCart size={20} />
+                <ShoppingCart size={20} onClick={() => navigate("/cartPage")} />
                 <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   3
                 </span>
               </button>
               <button className="p-2 rounded-lg hover:bg-gray-100 relative">
-                <Bell size={20} />
+                <LogOut onClick={handleLogOut} size={20} />
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-2 h-2 rounded-full"></span>
               </button>
               <div className="w-8 h-8 bg-gray-300 rounded-full overflow-hidden">
@@ -264,7 +307,6 @@ const UserDashboard = () => {
                   alt={listing.title}
                   className="w-full h-48 object-cover"
                 />
-                
               </div>
 
               <div className="p-4">
@@ -296,9 +338,9 @@ const UserDashboard = () => {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Link 
-                    to={`/product/${listing.id}`} 
-                    state={{ product: listing }} 
+                  <Link
+                    to={`/product/${listing.id}`}
+                    state={{ product: listing }}
                     className="flex-1 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-1"
                   >
                     <EyeIcon size={14} />
@@ -308,13 +350,6 @@ const UserDashboard = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Add New Product Button */}
-        <div className="fixed bottom-6 right-6">
-          <button className="w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-colors flex items-center justify-center hover:shadow-xl">
-            <Plus size={24} />
-          </button>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -29,6 +30,7 @@ const Login = () => {
       });
 
       if (res.status === 200) {
+        toast.success("Login Successfully");
         navigate("/dashboard"); // redirect to DashBoard after success
       }
     } catch (err) {

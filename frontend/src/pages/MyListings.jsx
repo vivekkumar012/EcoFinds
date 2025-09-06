@@ -7,7 +7,7 @@ import {
   SortAsc,
   Users,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MyListingsPage() {
   const [cartCount, setCartCount] = useState(2);
@@ -19,36 +19,36 @@ export default function MyListingsPage() {
   const products = [
     {
       id: 1,
-      title: "Wireless Bluetooth Headphones",
-      price: 299.99,
-      category: "Electronics",
-      views: 120,
-      likes: 30,
-      datePosted: "2025-09-01",
+      title: "Vintage Leather Jacket",
+      category: "Fashion",
+      price: 85,
+      views: 124,
+      likes: 23,
+      datePosted: "2 days ago",
       image:
-        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200&h=200&fit=crop",
     },
     {
       id: 2,
-      title: "Premium Running Shoes",
-      price: 159.99,
-      category: "Fashion",
-      views: 90,
-      likes: 15,
-      datePosted: "2025-08-29",
+      title: "MacBook Pro 2019",
+      category: "Electronics",
+      price: 899,
+      views: 89,
+      likes: 45,
+      datePosted: "1 week ago",
       image:
-        "https://images.unsplash.com/photo-1528701800489-20be0f2f9b6b?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop",
     },
     {
       id: 3,
-      title: "Smart Home Speaker",
-      price: 89.99,
-      category: "Electronics",
+      title: "Scandinavian Dining Chair",
+      category: "Furniture",
+      price: 120,
       views: 67,
       likes: 12,
-      datePosted: "2025-08-28",
+      datePosted: "3 days ago",
       image:
-        "https://images.unsplash.com/photo-1587202372775-98927a7eab72?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop",
     },
     {
       id: 4,
@@ -57,9 +57,9 @@ export default function MyListingsPage() {
       price: 450,
       views: 156,
       likes: 78,
-      datePosted: "2025-08-25",
+      datePosted: "5 days ago",
       image:
-        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=200&h=200&fit=crop",
     },
   ];
 
@@ -102,10 +102,15 @@ export default function MyListingsPage() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-gray-50 text-white min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center p-6 border-b border-gray-700">
-        <div className="text-lg font-medium">EcoFinds</div>
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-sm">🌱</span>
+          </div>
+          <Link to={"/dashboard"} className="text-xl font-bold text-gray-900">EcoFinds</Link>
+        </div>
         <div className="flex items-center gap-4">
           <div className="relative">
             <div className="bg-red-500 w-8 h-6 rounded flex items-center justify-center">
@@ -123,11 +128,11 @@ export default function MyListingsPage() {
 
       {/* Title + Add new */}
       <div className="flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-semibold">My Listings</h1>
-        <button className="bg-gray-700 border border-gray-500 rounded-full px-4 py-2 flex items-center gap-2 text-sm hover:bg-gray-600 transition-colors">
+        <h1 className="text-2xl font-semibold text-gray-900">My Listings</h1>
+        <Link to={"/add-product"} className="bg-gray-700 border border-gray-500 rounded-full px-4 py-2 flex items-center gap-2 text-sm hover:bg-gray-600 transition-colors">
           <Plus size={16} />
           Add new
-        </button>
+        </Link>
       </div>
 
       {/* Search */}
@@ -142,7 +147,7 @@ export default function MyListingsPage() {
             placeholder="Search your listings..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-gray-800 border border-gray-500 rounded-2xl py-3 pl-12 pr-4 text-white placeholder-gray-400 focus:border-gray-400 focus:outline-none"
+            className="w-full bg-white border border-gray-500 rounded-2xl py-3 pl-12 pr-4 text-white placeholder-gray-400 focus:border-gray-400 focus:outline-none"
           />
         </div>
       </div>
@@ -153,7 +158,7 @@ export default function MyListingsPage() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="bg-gray-700 border border-gray-500 rounded-2xl px-4 py-2 text-sm text-white"
+          className="bg-gray-200 border border-gray-500 rounded-2xl px-4 py-2 text-sm text-black"
         >
           <option value="recent">Most Recent</option>
           <option value="price-low">Price: Low to High</option>
@@ -166,7 +171,7 @@ export default function MyListingsPage() {
         <select
           value={filterBy}
           onChange={(e) => setFilterBy(e.target.value)}
-          className="bg-gray-700 border border-gray-500 rounded-2xl px-4 py-2 text-sm text-white"
+          className="bg-gray-200 border border-gray-500 rounded-2xl px-4 py-2 text-sm text-black"
         >
           <option value="all">All Categories</option>
           <option value="Electronics">Electronics</option>

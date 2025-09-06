@@ -5,12 +5,11 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import DashBoard from './pages/DashBoard'
 import ProductDetailPage from "./pages/ProductDetails";
-<<<<<<< HEAD
 import AddProduct from './pages/AddProduct'
 import CartPage from './pages/CartPage'
-=======
 import MyListingsPage from './pages/MyListings'
->>>>>>> abf82db6b1e18f2227c7ba25f0e986f8d80268ed
+import toast, { Toaster } from 'react-hot-toast';
+
 
 function App() {
 
@@ -21,11 +20,12 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Signup />} />
         <Route path='/dashboard' element={<DashBoard />} />
-        <Route path="/listings" element={<MyListingsPage />} />
+        <Route path="/my-listings" element={<MyListingsPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path='/add-product' element={<AddProduct />} />
         <Route path='/cartPage' element={<CartPage />} />
       </Routes>
+      <Toaster />
     </div>
   )
 }

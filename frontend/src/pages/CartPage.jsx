@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   // Mock cart data (replace with API or context later)
@@ -42,9 +43,14 @@ const CartPage = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
       {/* Header */}
       <div className="flex justify-between items-center w-full max-w-2xl mb-6 px-4">
-        <h1 className="text-2xl font-bold">Logo</h1>
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+            <Link to={"/dashboard"} className="text-white font-bold text-sm cursor-pointer">🌱</Link>
+          </div>
+          <Link to={"/dashboard"} className="text-xl font-bold text-gray-900 cursor-pointer">EcoFinds</Link>
+        </div>
         <button className="relative">
-          <span className="material-icons text-2xl">account_circle</span>
+          <span className="material-icons text-2xl cursor-pointer">account_circle</span>
         </button>
       </div>
 
