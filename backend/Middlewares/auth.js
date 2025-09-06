@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  jwt  from 'jsonwebtoken';
+=======
+import jwt  from 'jsonwebtoken';
+>>>>>>> b1c4c1c5dca6eace434e92e046f75c43c73f8b8f
 
 const isAuthenticate = async (req, res, next) => {
     try {

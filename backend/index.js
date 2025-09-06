@@ -4,9 +4,11 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 import userRouter from './Routes/userRoute.js';
+
 import productRoutes from "./Routes/productRoute.js"
 import cartRoutes from "./Routes/cartRoute.js"
 import purchaseRoutes from "./Routes/purchaseRoute.js"
+
 
 dotenv.config();
 const app = express();
@@ -17,7 +19,7 @@ app.get("/", (req, res) => {
 
 //Middlewares
 app.use(cors({
-    origin:'http://localhost:5173/',
+    origin:'http://localhost:5173',
     credentials: true
 }))
 app.use(express.json());
@@ -33,7 +35,7 @@ try {
 }
 
 //apis
-
+app.use("/api/v1/user", userRouter);
 
 const port = 3001 || process.env.PORT;
 

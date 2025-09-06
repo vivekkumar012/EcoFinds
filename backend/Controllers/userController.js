@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import {User} from "../Models/userModel.js"
 import jwt from "jsonwebtoken";
+=======
+import { userModel } from "../Models/userModel.js"
+import jwt from "jsonwebtoken"
+>>>>>>> b1c4c1c5dca6eace434e92e046f75c43c73f8b8f
 import bcrypt from "bcrypt"
 
 //Login User
@@ -37,20 +42,28 @@ export const loginUser = async (req, res) => {
     }
 }
 
-// Register User
+
 export const registerUser = async (req, res) => {
-    const { fullname, email, password } = req.body;
+    const { username, email, password } = req.body;
 
     try {
+<<<<<<< HEAD
         //checking is User already exists?
         const exists = await User.findOne({ email });
+=======
+        // Check if user already exists
+        const exists = await userModel.findOne({ email });
+>>>>>>> b1c4c1c5dca6eace434e92e046f75c43c73f8b8f
         if (exists) {
-            return res.json({ success: false, message: "User already exists" })
+            return res
+                .status(400)
+                .json({ success: false, message: "User already exists" });
         }
 
-        //hashing user password
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
+<<<<<<< HEAD
         //New user
         const newUser = new User({
             fullname: fullname,
@@ -63,12 +76,22 @@ export const registerUser = async (req, res) => {
 
         res.json({ success: true, token })
 
+=======
+        // Create user
+        const newUser = await userModel.create({
+            username,
+            email,
+            password: hashedPassword,
+        });
+>>>>>>> b1c4c1c5dca6eace434e92e046f75c43c73f8b8f
 
+        return res.status(201).json({ success: true, user: newUser });
     } catch (err) {
-        console.log(err);
-        res.json({ success: false, message: "Error" })
+        console.error(err);
+        res.status(500).json({ success: false, message: "Error in register" });
     }
-}
+};
+
 
 //logout
 export const logout = (req, res) => {
