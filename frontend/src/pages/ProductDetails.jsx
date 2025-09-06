@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
           <img
             src={product.image}
             alt={product.title}
-            className="h-full object-cover rounded-2xl"
+            className="h-full w-full object-cover rounded-2xl"
           />
         </div>
 
@@ -69,7 +69,6 @@ export default function ProductDetailPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Category: <b>{product.category}</b> <br />
             Price: <b>${product.price}</b> <br />
-            Status: <b>{product.status}</b> <br />
             Views: {product.views} | Likes: {product.likes} <br />
             Posted: {product.datePosted}
           </p>
