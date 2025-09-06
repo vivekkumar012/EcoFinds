@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
+import userRouter from './Routes/userRoute.js';
+import productRoutes from "./Routes/productRoute.js"
+import cartRoutes from "./Routes/cartRoute.js"
+import purchaseRoutes from "./Routes/purchaseRoute.js"
 
 dotenv.config();
 const app = express();
@@ -36,3 +40,13 @@ const port = 3001 || process.env.PORT;
 app.listen(port, () => {
     console.log(`App is listening on Port${port}`)
 })
+
+
+
+
+ // routes
+
+ app.use("/api/v1/user" ,userRouter);
+app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/cart", cartRoutes);
+app.use("/api/v1/purchases", purchaseRoutes);

@@ -1,12 +1,12 @@
-import userModel from "../Models/userModel.js"
-import jwt from "jsonwebtoken"
+import {User} from "../Models/userModel.js"
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 
 //Login User
 export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await userModel.findOne({ email });
+        const user = await User.findOne({ email });
 
         //if user doesn't exists
         if (!user) {
@@ -43,7 +43,7 @@ export const registerUser = async (req, res) => {
 
     try {
         //checking is User already exists?
-        const exists = await userModel.findOne({ email });
+        const exists = await User.findOne({ email });
         if (exists) {
             return res.json({ success: false, message: "User already exists" })
         }
@@ -52,7 +52,7 @@ export const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         //New user
-        const newUser = new userModel({
+        const newUser = new User({
             fullname: fullname,
             email: email,
             password: hashedPassword
@@ -84,7 +84,7 @@ export const getProfile = async (req, res) => {
                 message: "Something went error in getting profile"
             })
         }
-        const user = await userModel.findById(userId);
+        const user = await User.findById(userId);
         if (!user) {
             return res.status(400).json({
                 message: "User not found"
